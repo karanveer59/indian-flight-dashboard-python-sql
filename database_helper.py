@@ -10,11 +10,11 @@ class DB:
         # self.mycursor = None
         try:
             self.conn = sql.connect(host= '127.0.0.1', user= os.environ['USER'], password= os.environ['PASSWORD'] , database= 'flight', cursorclass=pymysql.cursors.DictCursor)     
-            
+            self.mycursor= self.conn.cursor()
             print("Connection established")
         except Exception as e:
             print("Connection Failed! ", e)
-        self.mycursor= self.conn.cursor()
+        
     def name_of_cities(self):
         self.mycursor.execute("""
                               SELECT DISTINCT(Departure_Port) from flights
