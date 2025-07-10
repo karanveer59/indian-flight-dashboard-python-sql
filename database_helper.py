@@ -7,7 +7,7 @@ load_dotenv()
 class DB:
     def __init__(self):
         try:
-            self.conn = sql.connect(host= '127.0.0.1', user= os.environ['USER'], password= os.environ['PASSWORD'] , database= 'flight')     
+            self.conn = sql.connect(host= '127.0.0.1', user= os.environ['USER'], password= os.environ['PASSWORD'] , database= 'flight', cursorclass=pymysql.cursors.DictCursor)     
             self.mycursor= self.conn.cursor()
             print("Connection established")
         except Exception as e:
