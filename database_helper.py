@@ -1,5 +1,6 @@
 import pymysql as sql
 import os 
+import streamlit as st
 import pandas as pd
 from dotenv import load_dotenv
 load_dotenv()
@@ -9,7 +10,7 @@ class DB:
         # self.conn = None
         # self.mycursor = None
         try:
-            self.conn = sql.connect( host=st.secrets["DB_HOST"], user=st.secrets["DB_USER"], password=st.secrets["DB_PASSWORD"],  database=st.secrets["DB_NAME"], cursorclass=pymysql.cursors.DictCursor)     
+            self.conn = sql.connect( host=st.secrets["DB_HOST"], user=st.secrets["DB_USER"], password=st.secrets["DB_PASSWORD"],  database=st.secrets["DB_NAME"])     
             self.mycursor= self.conn.cursor()
             print("Connection established")
         except Exception as e:
